@@ -1,0 +1,6 @@
+pygame
+opencv
+tensorflow
+keras
+numpy
+dokusan
