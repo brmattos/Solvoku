@@ -16,10 +16,10 @@ To run the code on your local machine, follow these steps:
    pip install -r requirements.txt
    ```
 **3. Using your board images:**
-- place any board images that you'd like to solve into the `boards` folder
+- place any board images that you'd like to solve into the `Boards` folder
 
 ## Usage
-- `PLAYING GAME`: click on empty cells to enter values
+- `PLAYING GAME`: click on empty cells to enter values, then press enter to finalize guess
 - `SOLVING IMAGES`: type file name (ex. puzzle_5.jpg) and click upload to solve the image
 
 ## Project Structure
@@ -45,7 +45,7 @@ https://github.com/brmattos/Solvoku/assets/140926908/76ccb9be-0407-45a5-a691-12e
 
 ---
 
-<h2 align="center">Game Ending</h2>
+<h2 align="center">Board Complete</h2>
 <p align="center">
    <img src="https://github.com/brmattos/Solvoku/assets/140926908/f1f7138f-a12d-427b-8674-e5ef20628f14" alt="Game Ending" width="650" height="500">
 </p>
