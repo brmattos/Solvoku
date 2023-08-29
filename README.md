@@ -4,10 +4,6 @@
 ## Overview
 This project provides a graphical user interface for playing and solving Sudoku puzzles using the Pygame library. Puzzles are solved using a backtracking algorithm, with images of puzzles also being solvable through the implementation of the OpenCV library for image processing. From the GUI's menu, the user can has the option to start a game with different difficulty levels, solve puzzles from uploaded images, and observe the solution and solution processes. The project's game logic is contained in the 'game' module, while the puzzle image processing is managed by the 'img_solver' module.
 
-## Usage
-- `PLAYING GAME`: click on empty cells to enter values
-- `SOLVING IMAGES`:
-
 ## Getting Started
 To run the code on your local machine, follow these steps:
 
@@ -21,6 +17,10 @@ To run the code on your local machine, follow these steps:
    ```
 **3. Using your board images:**
 - place any board images that you'd like to solve into the `boards` folder
+
+## Usage
+- `PLAYING GAME`: click on empty cells to enter values
+- `SOLVING IMAGES`: type file name (ex. puzzle_5.jpg) and click upload to solve the image
 
 ## Project Structure
 - `player.py`: main file of the project, implementing a GUI and menu for playing and solving Sudoku puzzles.
