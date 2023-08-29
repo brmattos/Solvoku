@@ -2,7 +2,7 @@
 ---
 
 ## Overview
-This project provides a graphical user interface for playing and solving Sudoku puzzles using the Pygame library. Puzzles are solved using a backtracking algorithm, with images of puzzles also being solvable through the implementation of the OpenCV library for image processing. Predicts digits within the sudoku board cells using a Convolutional Neural Network (CNN) model using the keras library. From the GUI's menu, the user has the option to start a game with different difficulty levels, solve puzzles from uploaded images, and observe the solution and solution processes. The project's game logic is contained in the 'game' module, while the puzzle image processing is managed by the 'img_solver' module.
+This project provides a graphical user interface for playing and solving Sudoku puzzles using the Pygame library. Puzzles are solved using a backtracking algorithm, with images of puzzles also being solvable through the implementation of the OpenCV library for image processing. Predicts digits within the sudoku board cells using a Convolutional Neural Network (CNN) model using the keras library. From the GUI's menu, the user has the option to start a game with different difficulty levels, solve puzzles from uploaded images, and observe the solution and solution processes. The project's game logic is contained in the `game` module, while the puzzle image processing is managed by the `img_solver` module, with the main file of the program being `player.py`.
 
 ## Getting Started
 To run the code on your local machine, follow these steps:
@@ -19,6 +19,7 @@ To run the code on your local machine, follow these steps:
 - place any board images that you'd like to solve into the `Boards` folder
 
 ## Usage
+- `START`: run the `player.py` file to start at the menu
 - `PLAYING GAME`: click on empty cells to enter values, then press enter to finalize guess
 - `SOLVING IMAGES`: type file name (ex. puzzle_5.jpg) and click upload to solve the image
 
