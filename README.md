@@ -36,6 +36,10 @@ To run the code on your local machine, follow these steps:
 
 # Image Processing
 
+<p align="center">
+   <img src="https://github.com/brmattos/Solvoku/assets/140926908/0ae34d37-242b-45c8-9951-c9398be38c41" alt="Image Processing" width="650" height="350">
+</p>
+
 - Implements an image processing pipeline to analyze Sudoku boards using functions from the `process.py` module
 - Utilizes image preprocessing techniques, contour detection, and perspective transformation to isolate the Sudoku board in `img_solver.py`
 - Employs a trained neural network model to predict digits within individual board spaces in the file `Resources/num_model.h5`, placed into a 2d array of int values
@@ -43,19 +47,10 @@ To run the code on your local machine, follow these steps:
 - Generates visualizations at various stages of the process, demonstrating the original board, digit predictions, and final solution
 - Flexible mechanism for displaying images, facilitating testing and analysis of the Sudoku solving process
 
-<p align="center">
-   <img src="https://github.com/brmattos/Solvoku/assets/140926908/0ae34d37-242b-45c8-9951-c9398be38c41" alt="Image Processing" width="650" height="350">
-</p>
-
 ---
 
-# Application (GUI)
+# Gameplay
 
-https://github.com/brmattos/Solvoku/assets/140926908/76ccb9be-0407-45a5-a691-12e863e8e43f
-
----
-
-<h2 align="center">Gameplay</h2>
 <p align="center">
    <img src="https://github.com/brmattos/Solvoku/assets/140926908/8c2af929-83ce-4d24-9365-25a4be5663fc" alt="Gameplay" width="650" height="500">
 </p>
@@ -68,6 +63,23 @@ https://github.com/brmattos/Solvoku/assets/140926908/76ccb9be-0407-45a5-a691-12e
 - Timer implemented using the time module, along with a mistake counter updated upon non-valid value entry
 - New game button generates a new board, resetting timer and mistake counter with same difficulty as initial game start
 - Capability to return back to menu at any time
+
+---
+
+# Application (GUI)
+
+https://github.com/brmattos/Solvoku/assets/140926908/76ccb9be-0407-45a5-a691-12e863e8e43f
+
+---
+
+<h2 align="center">Game Setup</h2>
+<p align="center">
+   <img src="https://github.com/brmattos/Solvoku/assets/140926908/b179430b-5707-4acd-b062-aa69edae39a0" alt="Game Setup" width="650" height="500">
+</p>
+
+- Page where the user can choose the difficulty level before playing a Sudoku game
+- The user can choose between three difficulty levels: easy, medium, and hard, with their button appearance changing when clicked as an indicator
+- `game` module is called and the game is run once the user clicks the play button (if no difficulty selected, automatically set to easy)
 
 ---
 
@@ -89,3 +101,5 @@ https://github.com/brmattos/Solvoku/assets/140926908/76ccb9be-0407-45a5-a691-12e
 - Type in file name after adding it to `Boards` folder and click upload to start processing the image for solution
 - 3 files saved to `Solutions` folder throughout the process: `board_image.jpg`, `process_image.jpg`, `solution_image.jpg`, which are cv2 image files created within the process of reading the image in `img_solver.py`
 - Upon exiting the program, these files are deleted for user privacy
+
+---
