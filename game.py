@@ -18,7 +18,7 @@ from randomize import *
 from algorithm import solve
 
 
-def run_game(screen, difficulty=20):
+def run_game(screen, difficulty):
     """
     Function called in player.py to run the game funcionality
     :param screen: screen to display to in player.py
@@ -111,7 +111,7 @@ def run_game(screen, difficulty=20):
                         return 'MENU'
                     elif new_game_btn.get_clicked():
                         # Restart screen with new board (new game)
-                        run_game(screen)
+                        run_game(screen, difficulty)
 
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -177,7 +177,7 @@ def run_game(screen, difficulty=20):
                     if original_board[i-1][j-1] != 0:
                         # Not empty & not being changed
                         return
-                    
+
                     if event.key == pygame.K_BACKSPACE:
                         # Set to to zero
                         board[i-1][j-1] = 0
@@ -407,4 +407,4 @@ if __name__ == '__main__':
     pygame.font.init()
     pygame.display.set_caption('Solvoku')
     screen = pygame.display.set_mode((900, 700))
-    run_game(screen)
+    run_game(screen, 20)

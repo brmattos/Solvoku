@@ -147,6 +147,7 @@ def play():
     """Setup page for playing Sudoku"""
 
     screen.fill((154, 182, 217))
+    clicked = False
 
     # Buttons
     back_img = pygame.image.load('Assets/Other/back_img.jpg').convert_alpha()
@@ -197,19 +198,24 @@ def play():
         else:
             hard_btn.draw(screen)
 
-        difficulty = 20
         # Check for button clicks and update button states
         if easy_btn.get_clicked():
             button_states = {'easy': True, 'medium': False, 'hard': False}
+            clicked = True
             difficulty = 20
 
         if medium_btn.get_clicked():
             button_states = {'easy': False, 'medium': True, 'hard': False}
-            difficulty = 75
+            clicked = True
+            difficulty = 60
 
         if hard_btn.get_clicked():
             button_states = {'easy': False, 'medium': False, 'hard': True}
+            clicked = True
             difficulty = 100
+
+        if not clicked:
+            difficulty = 20
 
         # Change screen
         if back_btn.get_clicked():
@@ -304,14 +310,16 @@ def solve_image():
             # Errors in img_solver.py or no input
             if error or user_text == '':
                 cont = False
-                user_text = 'ERROR'
+                user_text = 'ERROR - path not found'
             else:
                 # Indicate succes & load
                 screen.blit(loading_img, (680, 620))
                 cont = True
 
             if upload_clicked and cont:
-                show_solution()
+                is_valid = show_solution()
+                if not is_valid:
+                    user_text = 'ERROR - image not of a board'
 
         pygame.display.flip()
         clock.tick(60)
@@ -323,10 +331,17 @@ def show_solution():
     screen.fill((154, 182, 217))
 
     # Images
-    arrow_img = pygame.image.load('Assets/Solve/arrow_img.jpg')
-    solution_title = pygame.image.load('Assets/Solve/solution_title.jpg')
-    board_img = pygame.image.load('Solutions/board_image.jpg').convert_alpha()
-    solution_img = pygame.image.load('Solutions/solution_image.jpg').convert_alpha()
+    solution_title = pygame.image.load('Assets/Solve/solution_title.jpg').convert_alpha()
+
+    try:
+        # Created solution image files
+        board_img = pygame.image.load('Solutions/board_image.jpg').convert_alpha()
+        solution_img = pygame.image.load('Solutions/solution_image.jpg').convert_alpha()
+    except FileNotFoundError:
+        # Images were not valid
+        return False
+
+    arrow_img = pygame.image.load('Assets/Solve/arrow_img.jpg').convert_alpha()
     arrow_img = pygame.transform.scale(arrow_img, (60, 50))
     solution_title = pygame.transform.scale(solution_title, (400, 80))
     board_img = pygame.transform.scale(board_img, (350, 350))
