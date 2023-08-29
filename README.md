@@ -24,3 +24,13 @@ To run the code on your local machine, follow these steps:
 - `randomize.py`: generates random board for playing a game of Sudoku in the game module
 - `process.py`: functions used for OpenCV image processing of Sudoku boards implemented in the img_solver module
 - `img_solver.py`: processes images of Sudoku boards using the OpenCV library, with detecting the board, solving the board, and saving the solution and solution process as local files to be worked with in the player module
+
+---
+## Features
+
+<p align="center">
+   <img src="https://github.com/brmattos/Solvoku/assets/140926908/97027033-f0aa-46bb-a6d8-1708115c28d9" alt="Image" width="650" height="500">
+</p>
+
+
+
