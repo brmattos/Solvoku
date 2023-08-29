@@ -60,7 +60,7 @@ https://github.com/brmattos/Solvoku/assets/140926908/76ccb9be-0407-45a5-a691-12e
    <img src="https://github.com/brmattos/Solvoku/assets/140926908/8c2af929-83ce-4d24-9365-25a4be5663fc" alt="Gameplay" width="650" height="500">
 </p>
 
-- Board generated with `random.py` with difficulty depending on its being chosen within `player.py`
+- Board generated with `randomize` module with difficulty depending on its being chosen within `player.py`
 - User navigates around board by clicking on cells and entering numeric guesses from (1-9)
 - Placement is indicated by a red rectangle, with only empty cells being navigable
 - Backspace resets selected cell's displayed value to zero, newly entered value immediately replaces previous
