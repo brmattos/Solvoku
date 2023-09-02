@@ -111,7 +111,7 @@ def run_game(screen, difficulty):
                         return 'MENU'
                     elif new_game_btn.get_clicked():
                         # Restart screen with new board (new game)
-                        run_game(screen, difficulty)
+                        run_game(screen, difficulty)    
 
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -162,7 +162,8 @@ def run_game(screen, difficulty):
         cover_img = pygame.transform.scale(cover_img, (50, 50))
 
         i,j = position[1], position[0]
-        value = ''  # user guess in ASCII
+        value = ''  # User guess for render
+        str_value = ''  # User guess str
 
         while True:
 
@@ -174,12 +175,18 @@ def run_game(screen, difficulty):
 
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
+
+                    if hard_values[i - 1][j - 1]:
+                        # Already taken position, do nothing
+                        return
+
                     if original_board[i-1][j-1] != 0:
                         # Not empty & not being changed
                         return
 
                     if event.key == pygame.K_BACKSPACE:
                         # Set to to zero
+                        str_value = ''
                         board[i-1][j-1] = 0
                         format_cells(position, 'White', 'inside')
 
@@ -188,7 +195,8 @@ def run_game(screen, difficulty):
 
                     if 0 < event.key - 48 < 10:
                         # Check for valid input & update
-                        value = final_font.render(str(event.key - 48), True, final_color)
+                        str_value = str(event.key - 48)
+                        value = final_font.render(str_value, True, final_color)
                         format_cells(position, 'White', 'inside')
                         screen.blit(value, (position[0]*50 + 188, position[1]*50 + 45))
 
@@ -200,11 +208,12 @@ def run_game(screen, difficulty):
                         clock.tick(60)
 
                     if event.key == pygame.K_RETURN:
-                        # Value is officially entered and checked for correctness
+                        # Update cell visually
                         format_cells(position, 'White', 'cover')
 
                         if board[i-1][j-1] != 0:
                             # Finalize input onto display
+                            hard_values[i - 1][j - 1] = True  # Update finalized board values boolean
                             screen.blit(value, (position[0]*50 + 188, position[1]*50 + 45))
 
                         if board[i-1][j-1] != solved_board[i-1][j-1]:
@@ -221,6 +230,11 @@ def run_game(screen, difficulty):
                         return board
                 
                 if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                        
+                        if hard_values[i - 1][j - 1]:
+                            # Already taken position, do nothing
+                            return
+
                         # Clicked elsewhere on the screen
                         pos = pygame.mouse.get_pos()
 
@@ -250,7 +264,7 @@ def run_game(screen, difficulty):
         i, j = position[1], position[0]
         input_font = pygame.font.SysFont('Veener Solid', 40)
 
-        if original_board[i-1][j-1] == 0:
+        if original_board[i-1][j-1] == 0 and not hard_values[i-1][j-1]:
             # Draw squares
             format_cells(position, 'Red', 'cover')
             format_cells(position, 'White', 'inside')
@@ -387,11 +401,13 @@ def run_game(screen, difficulty):
     # Boards
     board = random_sudoku_board(difficulty)
     original_board = copy.deepcopy(board)
+    hard_values = [[True if board[i][j] != 0 else False for j in range(9)] for i in range(9)]
     solved_board = copy.deepcopy(board)
     solve(solved_board)
 
+
     clock = pygame.time.Clock()
-    start_time = time.time()  # Start imer
+    start_time = time.time()  # Start timer
 
     # Run code
     state = main()
